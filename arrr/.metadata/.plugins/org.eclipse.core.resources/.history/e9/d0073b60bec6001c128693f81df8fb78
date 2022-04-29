@@ -1,0 +1,82 @@
+package caseStudy.UserMicroservice.controller;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RestController;
+
+@CrossOrigin("*")
+@RestController
+@RequestMapping("/admin")
+public class AdminController {
+
+	@Autowired
+	private UserService fareService;
+
+	// This method finds the all Flights
+	@GetMapping("/findAll")
+	@ApiOperation(value = "Get all Train details")
+	public List<TrainDetails> getAllDetails() {
+		return fareService.getAllDetails();
+	}
+
+	// This method finds the Flight by flight no
+	@GetMapping("/find/{trainNo}")
+	@ApiOperation(value = "Get all Flight details by train Number")
+	public TrainDetails getDetailsByTrainNo(@PathVariable int flightNo) {
+		return UserService.findByTrainNo(TrainNo);
+	}
+
+	// This method add the new flight
+	@PostMapping("/add")
+	@ApiOperation(value = "Add new Train details to train database")
+	public String addFlightDetails(@Valid @RequestBody TrainDetails flightDetails) {
+		fareService.addFlightDetails(flightDetails);
+		return ("Added flight details with flight number - " + flightDetails.getTraintNo() + " successfully..!!");
+	}
+
+	// This method update the details of previous Flight
+	@PutMapping("/update/{flightNo}")
+	@ApiOperation(value = "Update flight details in flight database by flight Number")
+	public TrainDetails updateFlightDetails(@PathVariable int flightNo,
+			@Valid @RequestBody TrainDetails flightDetails) {
+		return fareService.updateFlightDetails(flightNo, flightDetails);
+	}
+
+	// This method delete the Flight by flightNo
+	@DeleteMapping("/delete/{flightNo}")
+	@ApiOperation(value = "Delete flight details in flight database by Flight Number")
+	public ResponseEntity<TrainDetails> deleteFlightDetails(@PathVariable int flightNo) {
+		return fareService.deleteFlightDetails(flightNo);
+	}
+
+	// update the no of seats based on the no of passengers that booked ticket
+	@GetMapping("/updateSeats/{flightNo}/{noOfPassengers}")
+	public void updateSeats(@PathVariable int flightNo, @PathVariable int noOfPassengers) {
+		TrainDetails currentflight = fareService.findByFlightNo(flightNo);
+		int initialSeats = currentflight.getNoOfSeats();
+		int finalSeats = initialSeats - noOfPassengers;
+		currentflight.setNoOfSeats(finalSeats);
+		fareService.updateTrainDetails(flightNo, currentflight);
+	}
+
+	// This method find the flights by startpoint, endpoint and flightDate
+	@GetMapping("/findBy/{startPoint}/{endPoint}/{flightDate}")
+	@ApiOperation(value = "Get Flight details by giving startPoint and endPoint locations and date")
+	public TrainDetails[] getFlightDetailsByStartPointAndEndPointAndFlightDate(@PathVariable String startPoint,
+			@PathVariable String endPoint, @PathVariable String flightDate) {
+		return fareService.findByStartPointAndEndPointAndTrainDate(startPoint, endPoint, flightDate);
+	}
+
+	// This method add the admin details
+	@PostMapping("/signup")
+	@ApiOperation(value = "To Add Admin Details")
+	public String saveUser(@RequestBody AdminDetails adminDetails) {
+		try {
+			this.fareService.addAdmin(adminDetails);
+			return "Admin Login Successfully ";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "Operation Failed";
+	}
+
+}

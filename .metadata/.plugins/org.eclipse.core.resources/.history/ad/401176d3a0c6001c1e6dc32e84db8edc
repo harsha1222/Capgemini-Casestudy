@@ -1,0 +1,5 @@
+package com.BookingTicketService.config;
+
+public class SwaggerConfiguration {
+
+}

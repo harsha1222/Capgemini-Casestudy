@@ -1,0 +1,14 @@
+1651121317232	Rename package 'caseStudy.fareMicroservice'
+1651121344225	Rename package 'caseStudy.fareMicroservice.config'
+1651121360856	Rename package 'caseStudy.fareMicroservice.controller'
+1651121380488	Rename package 'caseStudy.fareMicroservice.dao'
+1651121397569	Rename package 'caseStudy.fareMicroservice.entity'
+1651121412087	Rename package 'caseStudy.fareMicroservice.service'
+1651121431550	Rename type 'FareApplication'
+1651121560058	Rename type 'FareController'
+1651121667611	Rename type 'FlightDetails'
+1651124532405	Rename type 'FareService'
+1651124561193	Rename type 'FareServiceImpl'
+1651127506469	Rename type 'UserController'
+1651129131483	Delete element
+1651151852039	Delete element

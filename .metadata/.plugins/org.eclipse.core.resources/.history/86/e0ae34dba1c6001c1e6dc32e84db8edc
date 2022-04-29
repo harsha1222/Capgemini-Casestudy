@@ -1,0 +1,5 @@
+package com.BookingTicketService.Exception;
+
+public class ResourceNotFoundException {
+
+}

@@ -1,0 +1,5 @@
+package com.AdminService.repository;
+
+public class FareRepository {
+
+}

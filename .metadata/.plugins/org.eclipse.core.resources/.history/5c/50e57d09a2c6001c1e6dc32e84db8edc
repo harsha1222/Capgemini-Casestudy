@@ -1,0 +1,5 @@
+package com.BookingTicketService.repository;
+
+public interface UserRepository {
+
+}

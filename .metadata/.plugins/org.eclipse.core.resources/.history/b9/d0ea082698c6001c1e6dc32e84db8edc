@@ -1,0 +1,5 @@
+package com.APIAGateway.config;
+
+public class ApiGateWayConfig {
+
+}

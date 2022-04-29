@@ -1,0 +1,28 @@
+package caseStudy.UserMicroservice.service;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.http.ResponseEntity;
+
+import caseStudy.UserMicroservice.entity.AdminDetails;
+import caseStudy.UserMicroservice.entity.TrainDetails;
+
+
+public interface FareService 
+{
+	public List<TrainDetails> getAllDetails();
+	
+	public void addFlightDetails(TrainDetails flightDetails);
+	
+	public TrainDetails updateFlightDetails(int flightNo,TrainDetails flightDetails);
+	
+	public ResponseEntity<TrainDetails> deleteFlightDetails(int flightNo);
+
+	public TrainDetails findByFlightNo(int flightNo);
+
+	public TrainDetails[] findByStartPointAndEndPointAndFlightDate(String startPoint, String endPoint,
+			String flightDate);
+
+	public void addAdmin(AdminDetails adminDetails) ;
+
+}

@@ -1,0 +1,13 @@
+package caseStudy.UserMicroservice.dao;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+import caseStudy.UserMicroservice.entity.AdminDetails;
+import caseStudy.UserMicroservice.entity.FlightDetails;
+
+@Repository
+public interface AdminRepository extends MongoRepository<AdminDetails,Integer> {
+
+
+
+}
